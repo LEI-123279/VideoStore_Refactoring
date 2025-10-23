@@ -23,5 +23,4 @@ public abstract class Main
 		
 		System.out.println(who.statement());
 	}
-
 }
