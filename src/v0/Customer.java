@@ -18,7 +18,7 @@ public class Customer {
         return _name;
     }
 
-    public String statement() {
+    public String htmlStatement() {
 
         // header
         String result = "<font size=\"5\" face=\"Georgia, Arial, Garamond\" color=\"green\">\n";
@@ -26,7 +26,7 @@ public class Customer {
 
         result += "<ul>\n";
         for (Rental each : _rentals)
-            result += "\t<li>" + each.getMovie().getTitle() + "\t" + each.getAmount()+"\n";
+            result += "\t<li>" + each.getMovie().getTitle() + "\t" + each.getMovie().getRentalAmount(each.getDaysRented()) +"\n";
         result += "</ul>\n";
 
         // add footer lines
@@ -37,7 +37,7 @@ public class Customer {
         return result;
     }
 
-    public String htmlStatement() {
+    public String statement() {
 
         // header
         String result = "Rental Record for " + getName() + "\n";
@@ -48,7 +48,7 @@ public class Customer {
 
 
             // show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + each.getAmount() + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" + each.getMovie().getRentalAmount(each.getDaysRented()) + "\n";
         }
 
         // add footer lines
@@ -61,7 +61,7 @@ public class Customer {
     {
         int frequentRenterPoints = 0;
         for (Rental each: _rentals)
-            frequentRenterPoints += each.getFrequentRenterPoints();
+            frequentRenterPoints += each._movie.getFrequentRentalPoints(each.getDaysRented());
         return frequentRenterPoints;
     }
 
@@ -69,7 +69,7 @@ public class Customer {
     {
         double totalAmount = 0;
         for (Rental each: _rentals)
-            totalAmount += each.getAmount();
+            totalAmount += each.getMovie().getRentalAmount(each.getDaysRented());
         return totalAmount;
     }
 
