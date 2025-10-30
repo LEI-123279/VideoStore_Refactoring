@@ -2,6 +2,8 @@
 
 o repositório foi criado pelo aluno 123279 
 
+Fizemos todas as alterações no pacckage v0.
+
 | Curso         | Número  | Nome            | 
 |---------------|---------|-----------------|
 | LEI           | 122700  | Diogo Rua       | 
