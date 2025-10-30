@@ -21,6 +21,25 @@ public class Customer {
     public String statement() {
 
         // header
+        String result = "<font size=\"5\" face=\"Georgia, Arial, Garamond\" color=\"green\">\n";
+        result += "<h2>Rental Record for <i>" + getName() + "</i></h2>\n";
+
+        result += "<ul>\n";
+        for (Rental each : _rentals)
+            result += "\t<li>" + each.getMovie().getTitle() + "\t" + each.getAmount()+"\n";
+        result += "</ul>\n";
+
+        // add footer lines
+        result += "Amount owed is " + getTotalAmount() + "<br>\n";
+        result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points<br>\n";
+        result += "</font>\n";
+
+        return result;
+    }
+
+    public String htmlStatement() {
+
+        // header
         String result = "Rental Record for " + getName() + "\n";
 
         for (Rental each : _rentals) {
